@@ -1,0 +1,19 @@
+<%if(error && !projects) {%>
+    <p><%=(error)?error : "No Projects Found"%></p>
+<% } else { %>
+<% projects.forEach((project, index)=>{ %>
+<div class="col-12 col-sm-6 col-md-6 col-lg-3">
+    <div class="space_card">
+        <img src="<%=project.links.mission_patch_small%>" >
+        <h2><%=project.mission_name%> #<%=index+1%></h2>
+        <h3>Mission Ids</h3>
+        <ul class="space_list">
+            <li>(List mission ids)</li>
+        </ul>
+        <p><strong>Launch Year:</strong> <%=project.launch_year%></p>
+        <p><strong>Successful launch:</strong> <%=project.launch_success%></p>
+        <p><strong>Successful landing:</strong> <%=(project.rocket.first_stage.cores[0].land_success)?project.rocket.first_stage.cores[0].land_success : "Not Available"%></p>
+    </div>
+</div>
+<% }) %>
+<% } %>
