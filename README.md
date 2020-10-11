@@ -1,5 +1,5 @@
 # SpaceX-PS
-App to view all the projects done by SpaceX
+A basic App to view all the projects done by SpaceX using technoligies like NodeJS, Javascript and EJS. In this project, there are quite a few good functionalities to learn like <b>Server Side Rendering, API Rendering, EJS Templating, and Filters like major E-Commerce i.e Myntra</b>
 
 <b>Some of the Major technologies used:</b>
 1. <a href="https://nodejs.org/" target="_blank">NodeJS</a>
