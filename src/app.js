@@ -10,11 +10,11 @@ const port = process.env.port || 3000
 const basePath = path.join(__dirname, '../public')
 app.use(express.static(basePath))
 
-app.set('view engine', 'ejs') 
+app.set('view engine', 'ejs')
 
 
 app.get('/', (req, res) => {
-    commonFunctions.getAllProjects()
+    commonFunctions.getProjects()
     .then((projects)=>{
         let array = new Array()
         projects.forEach((data, index)=>{
@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 
 app.get('/filtered', (req, res)=>{
     var prms = new URLSearchParams(req.query)
-    commonFunctions.getFilteredProjects(prms.toString())
+    commonFunctions.getProjects(prms.toString())
     .then((projects)=>{
         //render ejs template
         res.render('filtered', {projects, error: ''})
