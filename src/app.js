@@ -52,6 +52,11 @@ app.get('/filters', async (req, res)=>{
     })  
 })
 
+//404 Message
+app.get('*', (req, res)=>{
+    res.send('Page Not Found')
+})
+
 
 
 //Express Server
