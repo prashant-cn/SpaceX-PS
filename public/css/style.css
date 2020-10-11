@@ -108,6 +108,12 @@ h1 {
     font-size: 26px;
 }
 
+h2 span.float-right{
+    font-size: 12px;
+    float: right;
+    font-weight: 400;
+}
+
 .container,
 .container-lg,
 .container-md,
@@ -228,6 +234,9 @@ h1 {
     .filter_list {
         padding: 0 0.5rem;
     }
+    .space_card img{
+        height: auto;
+    }
 }
 
 /********** IPAD Media Query CSS **********/
@@ -240,6 +249,9 @@ h1 {
     }
     .filter_list {
         padding: 0 3.2rem;
+    }
+    .space_card img{
+        height: auto;
     }
 }
 

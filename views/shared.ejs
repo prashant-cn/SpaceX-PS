@@ -4,7 +4,7 @@
     <%- include('include/head.ejs')%>
     
 </head>
-<body>
+<body onload="highlightSelection(location.search)">
 
     <section class="spacex">
         <div class="container">
@@ -19,18 +19,18 @@
                         <p>Launch Year</p>
                         <ul class="filter_list" id="launch_year">
                             <% projects.uniqueYears.forEach((year, index)=>{ %>
-                            <li><%=year%></li>
+                            <li data-value="<%=year%>"><%=year%></li>
                             <% }) %>
                         </ul>
                         <p>Successful Launch</p>
                         <ul class="filter_list" id="launch_success">
-                            <li>True</li>
-                            <li>False</li>
+                            <li data-value="true">True</li>
+                            <li data-value="false">False</li>
                         </ul>
                         <p>Successful Landing</p>
                         <ul class="filter_list" id="land_success">
-                            <li>True</li>
-                            <li>False</li>
+                            <li data-value="true">True</li>
+                            <li data-value="false">False</li>
                         </ul>
                     </div>
                 </div>

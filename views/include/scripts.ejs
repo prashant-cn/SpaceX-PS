@@ -5,8 +5,27 @@
         
         function getEventTarget(e) {
             e = e || window.event;
-            e.target.setAttribute('class', 'selected')
             return e.target || e.srcElement; 
+        }
+
+        function highlightSelection(url){
+            var qs = url.replace('?', '')
+            var pairs = qs.split('&')
+            var items = {}
+            // Loop through pairs and extract the key and the value (and append them to the object)
+            for (var i = 0; i < pairs.length; i++) {
+                items[pairs[i].split('=')[0]] = pairs[i].split('=')[1]
+            }
+            Object.keys(items).forEach((key)=>{
+                $(`#${key}`).find("*").removeClass("selected")
+                $(`#${key} li[data-value=${items[key]}]`).addClass("selected")
+            })
+        }
+
+        function getData(queryString){
+            $.ajax({url: `/filtered${queryString}`, success: function(result){
+                $(".filteredResults").html(result);
+            }}); 
         }
         
         const clearButton = document.querySelector('#clearSelection')
@@ -23,23 +42,20 @@
         .forEach((element)=>{
             element.addEventListener('click', (event)=>{
 
-                $(element).find("*").removeClass("selected");
                 var filterKey = element.id
-                var filterValue = getEventTarget(event).innerHTML.toLowerCase();
+                var filterValue = getEventTarget(event).getAttribute('data-value').toLowerCase();
 
                 filters[element.id] = filterValue
                 var urlParams = $.param( filters );
                 //update url
                 window.history.pushState(null, null, `/filters?${urlParams}`);
                 //const queryString = location.pathname+location.search
-                getData(location.search) 
+                
+                getData(location.search)
+                highlightSelection(location.search)
             })
         })
 
-        function getData(queryString){
-            $.ajax({url: `/filtered${queryString}`, success: function(result){
-                $(".filteredResults").html(result);
-            }}); 
-        }
+        
         
     </script>
