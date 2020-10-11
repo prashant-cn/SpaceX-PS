@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
     })  
 })
 
-app.get('/filters', (req, res)=>{
+app.get('/filtered', (req, res)=>{
     var prms = new URLSearchParams(req.query)
     commonFunctions.getFilteredProjects(prms.toString())
     .then((projects)=>{
@@ -36,6 +36,19 @@ app.get('/filters', (req, res)=>{
         res.render('filtered', {projects, error: ''})
     }).catch((error)=>{
         res.render('filtered', {projects: '', error})
+    })  
+})
+
+//if the link with filters is shared or is the first point of contact to app
+app.get('/filters', async (req, res)=>{
+    var prms = new URLSearchParams(req.query)
+    const uniqueYears = await commonFunctions.getYears()
+    commonFunctions.getFilteredProjects(prms.toString())
+    .then((projects)=>{
+        //render ejs template
+        res.render('shared', {projects:{projects,uniqueYears}, error: ''})
+    }).catch((error)=>{
+        res.render('shared', {projects: '', error})
     })  
 })
 
