@@ -162,6 +162,10 @@ h1 {
     border-radius: 4px;
 }
 
+.filter_list li.selected{
+    background: #239B56;
+}
+
 /******** Filters *************/
 /********* Filtered Card **************/
 .space_card {

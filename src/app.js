@@ -29,7 +29,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/filters', (req, res)=>{
-    
     var prms = new URLSearchParams(req.query)
     commonFunctions.getFilteredProjects(prms.toString())
     .then((projects)=>{

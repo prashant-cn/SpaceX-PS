@@ -20,6 +20,7 @@
                 <div class="col-md-3">
                     <div class="filter">
                         <h2>Filters</h2>
+                        <p id="clearSelection">Clear Selection</p>
                         <p>Launch Year</p>
                         <ul class="filter_list" id="launch_year">
                             <% projects.uniqueYears.forEach((year, index)=>{ %>
@@ -80,6 +81,18 @@
             e.target.setAttribute('class', 'selected')
             return e.target || e.srcElement; 
         }
+
+        
+        const clearButton = document.querySelector('#clearSelection')
+        clearButton.addEventListener('click', (event)=>{
+            if(location.search){
+                $('.filter').find("*").removeClass("selected");
+                //update url
+                window.history.pushState(null, null, `/`);
+                getData('/filters')
+            }
+        })
+            
         
         Array.from(document.getElementsByClassName('filter_list'))
         .forEach((element)=>{
@@ -94,14 +107,15 @@
                 //update url
                 window.history.pushState(null, null, `/filters?${urlParams}`);
                 const queryString = location.pathname+location.search
-                
-                $.ajax({url: `${queryString}`, success: function(result){
-                    $(".filteredResults").html(result);
-                }});
-                
+                getData(queryString) 
             })
-            
         })
+
+        function getData(queryString){
+            $.ajax({url: `${queryString}`, success: function(result){
+                $(".filteredResults").html(result);
+            }}); 
+        }
         
     </script>
 
