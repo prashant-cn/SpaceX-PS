@@ -8,7 +8,13 @@
         <h2><%=project.mission_name%> #<%=index+1%></h2>
         <h3>Mission Ids</h3>
         <ul class="space_list">
-            <li>(List mission ids)</li>
+            <%if(project.mission_id.length == 0){%>
+            <li>No Id's Available</li>
+            <% } else { %>
+            <% project.mission_id.forEach((id, index)=>{ %>
+            <li><%=id%></li>
+            <% }) %>
+            <% } %>
         </ul>
         <p><strong>Launch Year:</strong> <%=project.launch_year%></p>
         <p><strong>Successful launch:</strong> <%=project.launch_success%></p>

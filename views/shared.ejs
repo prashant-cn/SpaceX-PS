@@ -14,8 +14,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="filter">
-                        <h2>Filters</h2>
-                        <p id="clearSelection">Clear Selection</p>
+                        <h2>Filters <span class="float-right" id="clearSelection">Clear Selection</span></h2>
                         <p>Launch Year</p>
                         <ul class="filter_list" id="launch_year">
                             <% projects.uniqueYears.forEach((year, index)=>{ %>
@@ -47,7 +46,13 @@
                                     <h2><%=project.mission_name%> #<%=project.flight_number%></h2>
                                     <h3>Mission Ids</h3>
                                     <ul class="space_list">
-                                        <li>(List mission ids)</li>
+                                        <%if(project.mission_id.length == 0){%>
+                                        <li>No Id's Available</li>
+                                        <% } else { %>
+                                        <% project.mission_id.forEach((id, index)=>{ %>
+                                        <li><%=id%></li>
+                                        <% }) %>
+                                        <% } %>
                                     </ul>
                                     <p><strong>Launch Year:</strong> <%=project.launch_year%></p>
                                     <p><strong>Successful launch:</strong> <%=project.launch_success%></p>
