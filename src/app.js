@@ -43,7 +43,7 @@ app.get('/filtered', (req, res)=>{
 app.get('/filters', async (req, res)=>{
     var prms = new URLSearchParams(req.query)
     const uniqueYears = await commonFunctions.getYears()
-    commonFunctions.getFilteredProjects(prms.toString())
+    commonFunctions.getProjects(prms.toString())
     .then((projects)=>{
         //render ejs template
         res.render('shared', {projects:{projects,uniqueYears}, error: ''})

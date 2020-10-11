@@ -37,13 +37,13 @@
                 <div class="col-md-9">
                     <div class="filtered_card">
                         <div class="row filteredResults">
-                            <%if(error && !projects) {%>
-                                <p><%=(error)?error:"No Projects Found"%></p>
+                            <%if(error || projects.length == 0) {%>
+                                <p class="error_message"><%=(error)?error:"No Projects Found"%></p>
                             <% } else { %>
                             <% projects.projects.forEach((project, index)=>{ %>
                             <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                                 <div class="space_card">
-                                    <img src="<%=project.links.mission_patch_small%>" >
+                                    <img src="<%=project.links.mission_patch_small%>" alt="<%=project.mission_name%>">
                                     <h2><%=project.mission_name%> #<%=project.flight_number%></h2>
                                     <h3>Mission Ids</h3>
                                     <ul class="space_list">
