@@ -20,6 +20,7 @@ Initialize npm and get all the reuired npm packages for the project.
 
 
 <b>Lighthouse Score</b>
+
 <img src='lighthouse/spacex-lighthouse.png' alt="App to view all the projects done by SpaceX">
 
 Ping me at https://www.linkedin.com/in/prashant-kumar-2124b3b4/
