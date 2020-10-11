@@ -18,6 +18,8 @@ Initialize npm and get all the reuired npm packages for the project.
 
 <b>Congratulations!</b> You are good to GO now.
 
+<b>Live URL:</b> https://prashant-cn-spacex-ps.herokuapp.com/
+
 
 <b>Lighthouse Score</b>
 
